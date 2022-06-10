@@ -55,3 +55,19 @@ app.post("/deleteStudent", (req, res) => {
     }
   });
 });
+
+app.post("/updateStudent", (req, res) => {
+  qu =
+    "update sample set stuName = '" +
+    req.body.name +
+    "' where rollNo = '" +
+    req.body.roll +
+    "';";
+  console.log(qu);
+  database.query(qu, (err, result) => {
+    if (err) {
+      // res.json(result);
+      console.log(err);
+    }
+  });
+});

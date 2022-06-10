@@ -24,6 +24,18 @@ const App = () => {
       console.log(datas);
     });
   };
+  const handleUpdate = (roll) => {
+    console.log(roll);
+    axios
+      .post("http://localhost:3001/updateStudent", { roll, name })
+      .then((e) => {
+        var datas = dList;
+        // datas = datas.filter((e) => e.rollNo !== roll);
+        console.log(datas);
+        setName("");
+        setRoll("");
+      });
+  };
   useEffect(() => {}, []);
   return (
     <div>
@@ -48,6 +60,7 @@ const App = () => {
             <div key={e.rollNo}>
               {e.stuName}
               {e.rollNo}
+              <button onClick={() => handleUpdate(e.rollNo)}>update</button>
               <button onClick={() => handleDelete(e.rollNo)}>delete</button>
             </div>
           ))}
